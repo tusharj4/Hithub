@@ -41,8 +41,12 @@ export default function RootLayout({
   };
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-slate-100 font-sans p-4 md:p-8 flex flex-col gap-6 selection:bg-orange-500/30">
-      <nav className="flex justify-between items-center bg-[#18181B] border border-white/10 rounded-2xl px-6 py-4">
+    <div className="min-h-screen bg-[#09090B] text-slate-100 font-sans p-4 md:p-8 flex flex-col gap-6 selection:bg-orange-500/30 relative">
+      {/* Premium Background Grid/Grain overlay */}
+      <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
+      <nav className="relative z-50 flex justify-between items-center bg-[#18181B]/80 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-4 shadow-2xl">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center font-bold text-white tracking-tighter">
             H
