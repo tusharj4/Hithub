@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String    @id @default(cuid())
+  name         String?
+  email        String?   @unique
+  image        String?
+  githubHandle String?
+  createdAt    DateTime  @default(now())
+  upvotes      Upvote[]
+}
+
+model Repository {
+  id              String   @id @default(cuid())
+  githubId        Int      @unique
+  name            String
+  url             String
+  description     String?
+  language        String?
+  githubStars     Int
+  hithubScore     Int      @default(0)
+  
+  // AI Extracted Insights
+  aiCategory      String?
+  aiWhatItDoes    String?
+  aiUnderTheHood  String?
+  aiHowToUse      String?
+  
+  snapshotDate    DateTime @default(now())
+  createdAt       DateTime @default(now())
+
+  upvotes         Upvote[]
+}
+
+model Upvote {
+  id           String     @id @default(cuid())
+  userId       String
+  repositoryId String
+  createdAt    DateTime   @default(now())
+
+  user         User       @relation(fields: [userId], references: [id])
+  repository   Repository @relation(fields: [repositoryId], references: [id])
+
+  @@unique([userId, repositoryId])
+}

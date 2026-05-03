@@ -1,0 +1,6 @@
+{
+  "name": "HitHub",
+  "description": "HitHub aggregates top trending GitHub repositories daily using Gemini AI and allows developers to upvote the best tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
